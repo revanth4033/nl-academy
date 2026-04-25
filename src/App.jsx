@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './index.css';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -16,10 +17,10 @@ import FAQ from './components/FAQ';
 import FinalCTA from './components/FinalCTA';
 import Footer from './components/Footer';
 import ApplyModal from './components/ApplyModal';
+import CoursePage from './pages/CoursePage';
 
-export default function App() {
+function HomePage() {
   const [modalOpen, setModalOpen] = useState(false);
-
   return (
     <>
       <Navbar onApply={() => setModalOpen(true)} />
@@ -39,5 +40,16 @@ export default function App() {
       <Footer />
       <ApplyModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
     </>
+  );
+}
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/course/ai-automation" element={<CoursePage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
