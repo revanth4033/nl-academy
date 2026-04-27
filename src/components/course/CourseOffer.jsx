@@ -103,8 +103,15 @@ export default function CourseOffer({ onApply }) {
         >
           <motion.div
             className="pricing-card-glow"
+            animate={{
+              boxShadow: [
+                '0 0 0 0 rgba(131,77,251,0), 0 4px 24px rgba(131,77,251,0.06)',
+                '0 0 0 8px rgba(131,77,251,0.1), 0 4px 24px rgba(131,77,251,0.12)',
+                '0 0 0 0 rgba(131,77,251,0), 0 4px 24px rgba(131,77,251,0.06)',
+              ]
+            }}
+            transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut', repeatDelay: 1.5 }}
             whileHover={{ scale: 1.015 }}
-            transition={{ duration: 0.3 }}
           >
             <div className="pcg-badge">Most Popular · AI & Automation</div>
             <div className="pcg-price-row">
@@ -119,7 +126,15 @@ export default function CourseOffer({ onApply }) {
               <span>Batch starts</span><strong>June 22, 2026</strong>
             </div>
             <div className="pcg-detail-row">
-              <span>Seats remaining</span><strong className="accent-text">12 of 30</strong>
+              <span>Seats remaining</span>
+              <strong className="accent-text seats-urgent">
+                <motion.span
+                  className="urgency-dot"
+                  animate={{ opacity: [1, 0.25, 1] }}
+                  transition={{ duration: 1.4, repeat: Infinity, ease: 'easeInOut' }}
+                />
+                12 of 30
+              </strong>
             </div>
             <div className="pcg-detail-row">
               <span>Format</span><strong>Live · Online</strong>

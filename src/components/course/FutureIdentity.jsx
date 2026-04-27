@@ -55,15 +55,19 @@ function TiltCard({ role, i }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6, ease: [0.2, 0.8, 0.2, 1], delay: i * 0.1 }}
-      whileHover={{ scale: 1.02 }}
+      whileHover={{ scale: 1.02, y: -6 }}
     >
       <div className="identity-icon">{role.icon}</div>
       <h3 className="identity-title">{role.title}</h3>
       <p className="identity-desc">{role.desc}</p>
       <div className="identity-bottom">
-        <span className="identity-salary">{role.salary}</span>
+        <div className="identity-salary-row">
+          <span className="identity-salary">{role.salary}</span>
+          <span className="demand-badge" data-level={role.demand >= 93 ? 'very-high' : 'high'}>
+            {role.demand >= 93 ? '🔥 Very High Demand' : '📈 High Demand'}
+          </span>
+        </div>
         <div className="identity-demand">
-          <span className="demand-label">Demand</span>
           <div className="demand-bar">
             <motion.div
               className="demand-fill"

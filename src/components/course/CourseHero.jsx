@@ -23,6 +23,12 @@ export default function CourseHero({ onApply }) {
   return (
     <section className="course-hero" ref={ref} id="top">
       <motion.div className="course-hero-bg" style={{ y: bgY }} />
+      {/* Ambient animated glow blob */}
+      <motion.div
+        className="course-hero-blob"
+        animate={{ x: [0, 30, 0, -20, 0], y: [0, -15, 5, 10, 0] }}
+        transition={{ duration: 14, repeat: Infinity, ease: 'easeInOut' }}
+      />
       <div className="wrap course-hero-inner">
         {/* LEFT */}
         <motion.div
@@ -44,7 +50,7 @@ export default function CourseHero({ onApply }) {
             From zero to deployment — with mentors who've shipped it themselves.
           </p>
           <div className="course-hero-btns">
-            <button className="btn btn-primary btn-hero-glow" onClick={onApply}>
+            <button className="btn btn-primary btn-hero-glow btn-pulse" onClick={onApply}>
               Join Upcoming Batch
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
             </button>
@@ -53,13 +59,18 @@ export default function CourseHero({ onApply }) {
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
             </button>
           </div>
-          <div className="course-trust-line">
+          <motion.div
+            className="course-trust-line"
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 1.1, ease: [0.2, 0.8, 0.2, 1] }}
+          >
             <span>Live Mentorship</span>
             <span className="trust-dot" />
             <span>Real Projects</span>
             <span className="trust-dot" />
             <span>Career Focused</span>
-          </div>
+          </motion.div>
         </motion.div>
 
         {/* RIGHT — floating visual */}

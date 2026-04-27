@@ -1,5 +1,5 @@
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { useRef } from 'react';
+import { motion, useScroll, useTransform, useInView } from 'framer-motion';
+import { useRef, useState } from 'react';
 
 const STAGES = [
   {
@@ -83,14 +83,18 @@ export default function CourseTimeline() {
                   transition={{ duration: 0.4, delay: 0.1 + 0.05 * i }}
                 />
               </div>
-              <div className="stage-card">
+              <motion.div
+                className="stage-card"
+                whileHover={{ scale: 1.02, borderColor: 'var(--brand-tint)', boxShadow: '0 0 0 3px var(--brand-soft), 0 8px 32px rgba(131,77,251,0.1)' }}
+                transition={{ duration: 0.25 }}
+              >
                 <div className="stage-week">{stage.week}</div>
                 <h3 className="stage-title">{stage.title}</h3>
                 <p className="stage-desc">{stage.desc}</p>
                 <div className="stage-tags">
-                  {stage.tags.map(t => <span key={t} className="stage-tag">{t}</span>)}
+                  {stage.tags.map(t => <span key={t} className="stage-tag tag-shimmer">{t}</span>)}
                 </div>
-              </div>
+              </motion.div>
             </motion.div>
           ))}
         </div>

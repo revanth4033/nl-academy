@@ -81,10 +81,12 @@ export default function CourseMentor() {
         >
           <div className="mentor-workspace">
             <div className="workspace-img-wrap">
-              <img
+              <motion.img
                 src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=640&h=480&fit=crop"
                 alt="Mentor workspace"
                 className="workspace-img img-graded"
+                animate={{ scale: 1.08 }}
+                transition={{ duration: 12, repeat: Infinity, repeatType: 'reverse', ease: 'easeInOut' }}
               />
               <div className="workspace-overlay" />
             </div>

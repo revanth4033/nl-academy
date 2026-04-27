@@ -1892,3 +1892,136 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
   .stage-dot { left: 12px; }
   .timeline-line-bg, .timeline-line-fill { left: 20px; }
 }
+
+/* ============================================================
+   COURSE PAGE — ENHANCEMENT LAYER
+   ============================================================ */
+
+/* ── CTA periodic glow pulse ── */
+@keyframes ctaPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(131,77,251,0.5), 0 4px 20px rgba(131,77,251,0.18); }
+  50%       { box-shadow: 0 0 0 12px rgba(131,77,251,0), 0 4px 20px rgba(131,77,251,0.18); }
+}
+.btn-pulse { animation: ctaPulse 2.8s ease-out infinite; }
+.btn-pulse:hover { animation: none; }
+
+/* ── Tag shimmer ── */
+@keyframes tagShimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.tag-shimmer {
+  background-image: linear-gradient(
+    105deg,
+    var(--brand-soft) 0%,
+    rgba(131,77,251,0.18) 40%,
+    var(--brand-soft) 60%,
+    var(--brand-soft) 100%
+  );
+  background-size: 200% 100%;
+  animation: tagShimmer 3s linear infinite;
+  border: 1px solid var(--brand-tint);
+  color: var(--brand);
+}
+
+/* ── Ambient hero glow blob ── */
+.course-hero-blob {
+  position: absolute;
+  width: 500px; height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(131,77,251,0.1) 0%, transparent 70%);
+  top: 15%; right: 5%;
+  pointer-events: none;
+  filter: blur(48px);
+  z-index: 0;
+}
+
+/* ── Identity demand badge ── */
+.identity-salary-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+.demand-badge {
+  font-family: var(--f-mono);
+  font-size: 10px;
+  font-weight: 500;
+  padding: 3px 9px;
+  border-radius: 99px;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+.demand-badge[data-level='very-high'] {
+  background: rgba(131,77,251,0.1);
+  color: var(--brand);
+  border: 1px solid var(--brand-tint);
+}
+.demand-badge[data-level='high'] {
+  background: rgba(16,163,127,0.1);
+  color: #10A37F;
+  border: 1px solid rgba(16,163,127,0.2);
+}
+
+/* Remove old demand label (replaced by badge) */
+.identity-demand { margin-top: 0; }
+
+/* ── Seats urgency ── */
+.seats-urgent {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.urgency-dot {
+  display: inline-block;
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--brand);
+  flex-shrink: 0;
+}
+
+/* ── Final CTA background gradient ── */
+.cta-bg-gradient {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Final CTA reinforcement line ── */
+.cta-reinforcement {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 24px;
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+/* ── Project tags also shimmer ── */
+.project-tag { transition: background 0.3s; }
+.project-card:hover .project-tag {
+  background-image: linear-gradient(
+    105deg,
+    var(--brand-soft) 0%,
+    rgba(131,77,251,0.18) 40%,
+    var(--brand-soft) 60%,
+    var(--brand-soft) 100%
+  );
+  background-size: 200% 100%;
+  animation: tagShimmer 2s linear infinite;
+}
+
+/* ── Outcome card stronger hover ── */
+.outcome-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 0 2px var(--brand-tint), 0 16px 48px rgba(131,77,251,0.1);
+  border-color: var(--brand-tint);
+}
+.outcome-card { transition: transform 0.3s ease, border-color 0.3s, box-shadow 0.3s; }
