@@ -19,7 +19,7 @@ import ApplyModal from './components/ApplyModal';
 import CoursePage from './pages/CoursePage';
 
 const path = window.location.pathname;
-const isCourse = path === '/course' || path.startsWith('/course/');
+const isCourse = false; // course page hidden — re-enable when ready to launch
 
 function HomePage() {
   const [modalOpen, setModalOpen] = useState(false);
