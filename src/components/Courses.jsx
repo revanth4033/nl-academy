@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
 
 const COURSES = [
   {
@@ -11,7 +10,6 @@ const COURSES = [
     badgeLabel: 'Live · Online',
     weeks: '12 Weeks',
     level: 'Intermediate',
-    href: '/course/ai-automation',
   },
   {
     num: '02',
@@ -98,7 +96,7 @@ export default function Courses() {
           {COURSES.map((c, i) => (
             <motion.a
               key={c.num}
-              href={c.href || '#'}
+              href={c.num === '01' ? '/course' : '#'}
               className="course-row"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}

@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './index.css';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -19,12 +18,17 @@ import Footer from './components/Footer';
 import ApplyModal from './components/ApplyModal';
 import CoursePage from './pages/CoursePage';
 
+const path = window.location.pathname;
+const isCourse = path === '/course' || path.startsWith('/course/');
+
 function HomePage() {
   const [modalOpen, setModalOpen] = useState(false);
+  const open = () => setModalOpen(true);
+
   return (
     <>
-      <Navbar onApply={() => setModalOpen(true)} />
-      <Hero onApply={() => setModalOpen(true)} />
+      <Navbar onApply={open} />
+      <Hero onApply={open} />
       <TrustStrip />
       <Courses />
       <Journey />
@@ -34,9 +38,9 @@ function HomePage() {
       <BrandZone />
       <Promise />
       <Mentors />
-      <Pricing onApply={() => setModalOpen(true)} />
+      <Pricing onApply={open} />
       <FAQ />
-      <FinalCTA onApply={() => setModalOpen(true)} />
+      <FinalCTA onApply={open} />
       <Footer />
       <ApplyModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
     </>
@@ -44,12 +48,5 @@ function HomePage() {
 }
 
 export default function App() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/course/ai-automation" element={<CoursePage />} />
-      </Routes>
-    </BrowserRouter>
-  );
+  return isCourse ? <CoursePage /> : <HomePage />;
 }
