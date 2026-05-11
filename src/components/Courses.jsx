@@ -96,7 +96,7 @@ export default function Courses() {
           {COURSES.map((c, i) => (
             <motion.a
               key={c.num}
-              href={c.num === '01' ? '/course' : '#'}
+              href="/course"
               className="course-row"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}

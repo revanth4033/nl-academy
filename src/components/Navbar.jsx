@@ -24,7 +24,7 @@ export default function Navbar({ onApply }) {
         </a>
         <div className="nav-links">
           <a href="#courses">Courses</a>
-          <a href="#events">Events</a>
+          <a href="/events">Events</a>
           <a href="#mentors">Mentors</a>
           <a href="#pricing">Pricing</a>
           <a href="#faq">FAQ</a>

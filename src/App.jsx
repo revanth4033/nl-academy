@@ -17,9 +17,10 @@ import FinalCTA from './components/FinalCTA';
 import Footer from './components/Footer';
 import ApplyModal from './components/ApplyModal';
 import CoursePage from './pages/CoursePage';
+import WorkshopPage from './pages/WorkshopPage';
+import EventsPage from './pages/EventsPage';
 
 const path = window.location.pathname;
-const isCourse = false; // course page hidden — re-enable when ready to launch
 
 function HomePage() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -48,5 +49,8 @@ function HomePage() {
 }
 
 export default function App() {
-  return isCourse ? <CoursePage /> : <HomePage />;
+  if (path.startsWith('/course')) return <CoursePage />;
+  if (path.startsWith('/workshop')) return <WorkshopPage />;
+  if (path.startsWith('/events')) return <EventsPage />;
+  return <HomePage />;
 }

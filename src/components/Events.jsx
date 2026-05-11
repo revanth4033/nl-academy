@@ -26,10 +26,10 @@ const SIDE_EVENTS = [
   },
 ];
 
-function EventCard({ event, delay = 0, large = false }) {
+function EventCard({ event, delay = 0, large = false, href = '#' }) {
   return (
     <motion.a
-      href="#"
+      href={href}
       className="event-card"
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -87,7 +87,7 @@ export default function Events() {
         </motion.div>
 
         <div className="events-grid">
-          <EventCard event={FLAGSHIP} large delay={0} />
+          <EventCard event={FLAGSHIP} large delay={0} href="/workshop" />
           <div className="event-stack">
             {SIDE_EVENTS.map((ev, i) => (
               <EventCard key={ev.title} event={ev} delay={0.1 + i * 0.08} />
